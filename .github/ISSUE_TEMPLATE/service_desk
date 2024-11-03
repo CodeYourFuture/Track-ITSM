@@ -1,0 +1,86 @@
+name: Service Desk Ticket
+description: Create a new service desk ticket
+title: "[SERVICE]: "
+labels: ["service-desk"]
+assignees: []
+body:
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: Select ticket priority based on impact and urgency
+      options:
+        - P1 - Critical (System down, multiple users)
+        - P2 - High (Single user blocked)
+        - P3 - Medium (Has workaround)
+        - P4 - Low (Information request)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Type of request
+      options:
+        - Hardware
+        - Software
+        - Network
+        - Access
+        - Other
+    validations:
+      required: false
+
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: Office location or Remote
+      placeholder: "e.g., London Office, Remote"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What is happening?
+      description: Describe the issue
+      placeholder: |
+        1. What exactly is happening?
+        2. When did it start?
+        3. What steps can reproduce it?
+        4. What have you tried already?
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Business Impact
+      description: How is this affecting work?
+      placeholder: |
+        - Who is affected?
+        - What work is blocked?
+        - Any deadlines impacted?
+    validations:
+      required: false
+
+  - type: input
+    id: system
+    attributes:
+      label: System Details
+      description: OS version, software version, etc
+      placeholder: "e.g., Windows 11, Chrome 120"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: troubleshooting
+    attributes:
+      label: Basic Troubleshooting
+      description: Mark completed steps
+      options:
+        - label: Restarted affected system
+        - label: Checked for updates
+        - label: Verified network connection
+        - label: Searched knowledge base
